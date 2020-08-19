@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>jQuery Responsive Countdown</title>
+	<meta name="description" content="Demo jQuery Responsive Countdown with Visual Builder by Chrisdean" />
+	<meta property="og:title" content="jQuery Responsive Countdown" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="http://dotstudio.co.uk/codecanyon/countdown/thumb.jpg" />
+	<meta property="og:url" content="http://dotstudio.co.uk/codecanyon/countdown/index.php" />
+	<meta property="og:description" content="Demo jQuery Responsive Countdown with Visual Builder by Chrisdean." />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:url" content="http://dotstudio.co.uk/codecanyon/countdown/index.php" />
+	<meta name="twitter:title" content="jQuery Responsive Countdown" />
+	<meta name="twitter:description" content="Demo jQuery Responsive Countdown with Visual Builder by Chrisdean." />
+	<meta name="twitter:image" content="http://dotstudio.co.uk/codecanyon/countdown/thumb.jpg" />
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	
+	<script src="jquery-ui-1.9.2.custom/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery.responsive_countdown.min.js"></script>
+	<script type="text/javascript" src="jscolor/jscolor.js"></script>
+	
+	<link rel="stylesheet" href="jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css">
+	<script src="jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+	<style>
+	  body {
+	    margin: 5px;
+	    padding: 0px;
+			background-color: #222;
+			font-family: Verdana;
+			font-size: 9px;
+			color: #888;
+			overflow-x: hidden;
+	  }
+	  a{
+	  	color: white;
+	  }
+	  .examples{
+	  	display: table-cell;
+	  	width: 310px;
+	  	height: 68px;
+	  	vertical-align: middle;
+	  	padding: 0px; margin: 0px;
+	  	opacity: 0.5;
+	  }
+	  .examples:hover{
+	  	opacity: 1;
+	  }
+	  .ex_div{
+	  	height: 68px;
+	  	float: left;
+	  	background-color: #333;
+	  	display: inline;
+	  	border-top: 1px solid #888;
+	  	border-bottom: 1px solid #000;
+	  	border-left: 1px solid #888;
+	  	border-right: 1px solid #000;
+	  }
+		.color{
+			width: 39px;
+			height: 25px;
+			text-align: center;
+			border: 0px;
+			border-top: 1px solid white;
+			border-left: 1px solid white;
+			border-bottom: 1px solid black;
+			border-right: 1px solid black;
+			font-size: 9px;
+			border-radius:5px;
+		}
+		.table_ui{
+			width: 312px;
+			height: 420px;
+			margin: 0 auto;
+	  	border-top: 1px solid #888;
+	  	border-bottom: 1px solid #000;
+	  	border-left: 1px solid #888;
+	  	border-right: 1px solid #000;
+		}
+		.table_ui td{
+			background-color: #333;
+			border: 1px solid #222;
+		}
+		.input_text{
+			width: 75px;
+			font-size: 10px;
+			border: 1px solid #222;
+			padding-left: 2px;
+		}
+		
+		
+		
+.classname {
+	-moz-box-shadow:inset 0px 1px 0px 0px #141312;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #141312;
+	box-shadow:inset 0px 1px 0px 0px #141312;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8f9490), color-stop(1, #4b4d4b) );
+	background:-moz-linear-gradient( center top, #8f9490 5%, #4b4d4b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f9490', endColorstr='#4b4d4b');
+	background-color:#8f9490;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0;
+	border:1px solid #e1e6e4;
+	display:block;
+	float: left;
+	margin: 2px;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:10px;
+	font-weight:bold;
+	font-style:normal;
+	height:25px;
+	line-height:25px;
+	width:150px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #0d0d0c;
+}
+.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4b4d4b), color-stop(1, #8f9490) );
+	background:-moz-linear-gradient( center top, #4b4d4b 5%, #8f9490 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4b4d4b', endColorstr='#8f9490');
+	background-color:#4b4d4b;
+}.classname:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
+		
+		
+		
+	</style>
+</head>
+<body>
+<script>
+	var c1;
+	var set_id = 0;
+	var pan_id = 0; 
+	var day_digits = 3;
+	var fillStyleSymbol1 = "rgba(255,255,255,1)";
+	var fillStyleSymbol2 = "rgba(255,255,255,1)";
+	var fillStylesPanel_g1_1 = "rgba(100,100,100,1)";
+	var fillStylesPanel_g1_2 = "rgba(30,30,30,1)";
+	var fillStylesPanel_g2_1 = "rgba(80,80,130,1)";
+	var fillStylesPanel_g2_2 = "rgba(20,20,60,1)";
+	var text_color = "rgba(255,255,255,1)";
+	var text_glow = "rgba(0,0,0,1)"; 
+	var show_ss = true;
+	var show_mm = true;
+	var show_hh = true;
+	var show_dd = true;
+	var f_family = "Verdana";
+	var show_labels = true;
+	var type3d = "single";
+	var max_height = 300;
+	var days_long = "days";
+	var days_short = "dd";
+	var hours_long = "hours";
+	var hours_short = "hh";
+	var mins_long = "minutes";
+	var mins_short = "mm";
+	var secs_long = "seconds";
+	var secs_short = "ss";
+	var min_f_size = 9;
+	var max_f_size = 30;
+	var target_date = "2020/1/1 00:00:00";
+	var time_zone = 0;
+	var target_future = true;
+	var bgr_color = "#333333";
+	var text_blur = 2;
+	var groups_spacing = 0;
+	var spacer = "none";
+	var font_to_digit_ratio = 0.125;
+	var labels_space = 1.2;
+
+
+	function color_to_rgb(the_color){
+    colorsOnly = the_color.substring(the_color.indexOf('(') + 1, the_color.lastIndexOf(')')).split(/,\s*/);
+		return colorsOnly;
+	}
+
+	function set_the_code(){
+		var the_code = '$("#first_countdown").ResponsiveCountdown({';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;target_date:"'+target_date+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;time_zone:'+time_zone+',target_future:'+target_future+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;set_id:'+set_id+',pan_id:'+pan_id+',day_digits:'+day_digits+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStyleSymbol1:"'+fillStyleSymbol1+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStyleSymbol2:"'+fillStyleSymbol2+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStylesPanel_g1_1:"'+fillStylesPanel_g1_1+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStylesPanel_g1_2:"'+fillStylesPanel_g1_2+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStylesPanel_g2_1:"'+fillStylesPanel_g2_1+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;fillStylesPanel_g2_2:"'+fillStylesPanel_g2_2+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;text_color:"'+text_color+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;text_glow:"'+text_glow+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;show_ss:'+show_ss+',show_mm:'+show_mm+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;show_hh:'+show_hh+',show_dd:'+show_dd+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;f_family:"'+f_family+'",show_labels:'+show_labels+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;type3d:"'+type3d+'",max_height:'+max_height+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;days_long:"'+days_long+'",days_short:"'+days_short+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;hours_long:"'+hours_long+'",hours_short:"'+hours_short+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;mins_long:"'+mins_long+'",mins_short:"'+mins_short+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;secs_long:"'+secs_long+'",secs_short:"'+secs_short+'",';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;min_f_size:'+min_f_size+',max_f_size:'+max_f_size+',';
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;spacer:"'+spacer+'",groups_spacing:'+groups_spacing+',text_blur:'+text_blur+',';;
+		the_code = the_code+'<br />&nbsp;&nbsp;&nbsp;font_to_digit_ratio:'+font_to_digit_ratio+',labels_space:'+labels_space;
+		the_code = the_code+'<br />});';
+		$("#the_code").html(the_code);
+	}
+
+	function set_ui(){
+		var colorsOnly;
+		$('#count_cont').css('background-color', bgr_color);
+		document.getElementById('ui_bgr_color').color.fromString(bgr_color);
+		colorsOnly = color_to_rgb(fillStyleSymbol1);
+		document.getElementById('ui_fillStyleSymbol1').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(fillStyleSymbol2);
+		document.getElementById('ui_fillStyleSymbol2').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(fillStylesPanel_g1_1);
+		document.getElementById('ui_fillStylesPanel_g1_1').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(fillStylesPanel_g1_2);
+		document.getElementById('ui_fillStylesPanel_g1_2').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(fillStylesPanel_g2_1);
+		document.getElementById('ui_fillStylesPanel_g2_1').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(fillStylesPanel_g2_2);
+		document.getElementById('ui_fillStylesPanel_g2_2').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(text_color);
+		document.getElementById('ui_text_color').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		colorsOnly = color_to_rgb(text_glow);
+		document.getElementById('ui_text_glow').color.fromRGB(colorsOnly[0]/255, colorsOnly[1]/255, colorsOnly[2]/255);
+		$('#show_dd').prop('checked', show_dd);$('#show_hh').prop('checked', show_hh);
+		$('#show_mm').prop('checked', show_mm);$('#show_ss').prop('checked', show_ss);
+		$('#show_labels').prop('checked', show_labels);
+		$("#ui_type3d").val(type3d);$("#ui_day_digits").val(day_digits);
+
+		$("#ui_text_blur").val(text_blur);
+		$("#ui_groups_spacing").val(groups_spacing);
+		$("#ui_font_to_digit_ratio").val(font_to_digit_ratio);
+		$("#ui_labels_space").val(labels_space);
+		$("#ui_spacer").val(spacer);
+
+		$( "#slidery" ).slider( "value", max_height );
+		$("#ui_days_long").val(days_long);$("#ui_days_short").val(days_short);
+		$("#ui_hours_long").val(hours_long);$("#ui_hours_short").val(hours_short);
+		$("#ui_mins_long").val(mins_long);$("#ui_mins_short").val(mins_short);
+		$("#ui_secs_long").val(secs_long);$("#ui_secs_short").val(secs_short);
+		$("#ui_target_date").val(target_date);$("#ui_time_zone").val(time_zone);
+		$("#ui_f_family").val(f_family);
+		$("#ui_min_f_size").val(min_f_size);
+		$("#ui_max_f_size").val(max_f_size);
+		$("#ui_set").val(String(set_id)+String(pan_id));
+		set_the_code();
+		c1.set_options([
+		"target_date", target_date, 
+		"time_zone", time_zone, 
+		"target_future", target_future, 
+		"set_id", set_id, 
+		"pan_id", pan_id, 
+		"day_digits", day_digits, 
+		"fillStyleSymbol1", fillStyleSymbol1, 
+		"fillStyleSymbol2", fillStyleSymbol2, 
+		"fillStylesPanel_g1_1", fillStylesPanel_g1_1, 
+		"fillStylesPanel_g1_2", fillStylesPanel_g1_2, 
+		"fillStylesPanel_g2_1", fillStylesPanel_g2_1, 
+		"fillStylesPanel_g2_2", fillStylesPanel_g2_2, 
+		"text_color", text_color, "text_glow", text_glow, 
+		"show_ss", show_ss, "show_mm", show_mm, "show_hh", show_hh, "show_dd", show_dd, 
+		"f_family", f_family, "show_labels", show_labels, 
+		"type3d", type3d, 
+		"max_height", max_height, 
+		"days_long", days_long, "days_short", days_short, "hours_long", hours_long, "hours_short", hours_short, 
+		"mins_long", mins_long, "mins_short", mins_short, "secs_long", secs_long, "secs_short", secs_short, 
+		"min_f_size", min_f_size, "max_f_size", max_f_size, 
+		"groups_spacing", groups_spacing, "text_blur", text_blur, "spacer", spacer,
+		"font_to_digit_ratio", font_to_digit_ratio, "labels_space", labels_space]);
+	}
+
+	function handle_resize(){
+  	var how_many = Math.floor(($( window ).width()-16)/312);
+  	var padding_left = 0;
+  	if(how_many>0){
+  		padding_left = ($( window ).width() - 16 - how_many*312)/2;
+  	}
+ 		$("#ex_cont").css("padding-left", padding_left);
+ 		
+ 		padding_left = 0;
+ 		if($( window ).width() - 16 > 620){
+ 			padding_left = ($( window ).width() - 16 - 624)/2;
+ 		}
+ 		else if($( window ).width() - 16 > 310){
+ 			padding_left = ($( window ).width() - 16 - 312)/2;
+ 		}
+		$("#ui_cont").css("padding-left", padding_left);
+	}
+
+	$( window ).resize(function() {handle_resize()});
+	
+	$(function() {
+
+		handle_resize();
+		$("#crc1").click(function(){
+			create_c1();
+		});
+		$("#pc1").click(function(){c1.pause_anim();});
+		$("#plc1").click(function(){c1.play_anim();});
+
+				
+		function create_c1(){
+			c1 = $("#first_countdown").ResponsiveCountdown();
+			set_the_code();
+		}
+		
+		$("#show_ss").change(function() {
+			if($(this).is(":checked")) {if(!show_ss){show_ss = true;set_ui();}}
+			else{if(show_ss){show_ss = false;set_ui();}}
+		});
+		$("#show_mm").change(function() {
+			if($(this).is(":checked")) {if(!show_mm){show_mm = true;set_ui();}}
+			else{if(show_mm){show_mm = false;set_ui();}}
+		});
+		$("#show_hh").change(function() {
+			if($(this).is(":checked")) {if(!show_hh){show_hh = true;set_ui();}}
+			else{if(show_hh){show_hh = false;set_ui();}}
+		});
+		$("#show_dd").change(function() {
+			if($(this).is(":checked")) {if(!show_dd){show_dd = true;set_ui();}}
+			else{if(show_dd){show_dd = false;set_ui();}}
+		});
+		$("#show_labels").change(function() {
+			if($(this).is(":checked")) {if(!show_labels){show_labels = true;set_ui();}}
+			else{if(show_labels){show_labels = false;set_ui();}}
+		});
+		$("#ui_type3d").change(function() {
+	    type3d = $(this).val();set_ui();
+		});		
+		$("#ui_groups_spacing").change(function() {
+	    groups_spacing = Number($(this).val());set_ui();
+		});		
+		$("#ui_font_to_digit_ratio").change(function() {
+	    font_to_digit_ratio = Number($(this).val());set_ui();
+		});		
+		$("#ui_labels_space").change(function() {
+	    labels_space = Number($(this).val());set_ui();
+		});		
+		$("#ui_text_blur").change(function() {
+	    text_blur = Number($(this).val());set_ui();
+		});		
+		$("#ui_spacer").change(function() {
+	    spacer = $(this).val();set_ui();
+		});		
+		$("#ui_set").change(function() {
+	    set_id = Number($(this).val().charAt(0));
+	    pan_id = Number($(this).val().charAt(1));
+	    set_ui();
+		});		
+		$("#ui_day_digits").change(function() {
+		  day_digits = Number($(this).val());set_ui();
+		});		
+    $( "#slidery" ).slider({
+			min: 50,
+      max: 300,
+			slide: function( event, ui ) {
+        max_height = Number(ui.value);set_ui();
+      }      
+    }).slider( "value", 300 );
+		$("#ui_days_long").change(function(){days_long = $("#ui_days_long").val(); set_ui();});
+		$("#ui_hours_long").change(function(){hours_long = $("#ui_hours_long").val(); set_ui();});
+		$("#ui_mins_long").change(function(){mins_long = $("#ui_mins_long").val(); set_ui();});
+		$("#ui_secs_long").change(function(){secs_long = $("#ui_secs_long").val(); set_ui();});
+		$("#ui_days_short").change(function(){days_short = $("#ui_days_short").val(); set_ui();});
+		$("#ui_hours_short").change(function(){hours_short = $("#ui_hours_short").val(); set_ui();});
+		$("#ui_mins_short").change(function(){mins_short = $("#ui_mins_short").val(); set_ui();});
+		$("#ui_secs_short").change(function(){secs_short = $("#ui_secs_short").val(); set_ui();});
+		$("#ui_target_date").change(function(){
+			target_date = $("#ui_target_date").val(); 
+			if (Date.parse(target_date)) {
+				set_ui();
+			}
+		});
+		$("#ui_f_family").change(function(){f_family = $("#ui_f_family").val(); set_ui();});
+		$("#ui_min_f_size").change(function(){min_f_size = Number($("#ui_min_f_size").val()); set_ui();});
+		$("#ui_max_f_size").change(function(){max_f_size = Number($("#ui_max_f_size").val()); set_ui();});
+
+		$("#ui_time_zone").change(function(){time_zone = Number($("#ui_time_zone").val()); set_ui();});
+
+		create_c1();
+			
+		$("#ex1").click(function(){
+			bgr_color = "#333333";
+			target_date = "2020/1/1 00:00:00";
+			time_zone = 0;
+			target_future = true;
+			set_id = 0;
+			pan_id = 0; 
+			day_digits = 3;
+			fillStyleSymbol1 = "rgba(255,255,255,1)";
+			fillStyleSymbol2 = "rgba(255,255,255,1)";
+			fillStylesPanel_g1_1 = "rgba(100,100,100,1)";
+			fillStylesPanel_g1_2 = "rgba(30,30,30,1)";
+			fillStylesPanel_g2_1 = "rgba(80,80,130,1)";
+			fillStylesPanel_g2_2 = "rgba(20,20,60,1)";
+			text_color = "rgba(255,255,255,1)";text_glow = "rgba(0,0,0,1)"; 
+			show_ss = true;show_mm = true;show_hh = true;show_dd = true;
+			f_family = "Verdana";show_labels = true;
+			type3d = "single";
+			max_height = 300;
+			days_long = "days";days_short = "dd";hours_long = "hours";hours_short = "hh";
+			mins_long = "minutes";mins_short = "mm";secs_long = "seconds";secs_short = "ss";
+			min_f_size = 9;max_f_size = 30;
+			text_blur = 2;
+			groups_spacing = 0;
+			spacer = "none";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+	
+		$("#ex2").click(function(){
+			bgr_color = "#333333";
+			target_date = "2020/1/1 00:00:00";
+			time_zone = 0;
+			target_future = true;
+			set_id = 1;
+			pan_id = 2; 
+			day_digits = 2;
+			fillStyleSymbol1 = "rgba(255,255,255,1)";
+			fillStyleSymbol2 = "rgba(255,255,255,1)";
+			fillStylesPanel_g1_1 = "rgba(170,17,17,1)";
+			fillStylesPanel_g1_2 = "rgba(80,0,0,1)";
+			fillStylesPanel_g2_1 = "rgba(140,140,140,1)";
+			fillStylesPanel_g2_2 = "rgba(90,90,90,1)";
+			text_color = "rgba(255,255,255,1)";text_glow = "rgba(255,0,0,1)"; 
+			show_ss = true;show_mm = true;show_hh = true;show_dd = true;
+			f_family = "Courier";show_labels = true;
+			type3d = "group";
+			max_height = 300;
+			days_long = "Tage";days_short = "TT";hours_long = "Stunden";hours_short = "SS";
+			mins_long = "Minuten";mins_short = "MM";secs_long = "Sekunden";secs_short = "SS";
+			min_f_size = 10;max_f_size = 30;
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "circles";
+			font_to_digit_ratio = 0.2;
+			labels_space = 1.2;
+			set_ui();
+		});
+		
+		$("#ex5").click(function(){
+			bgr_color = "#333333";
+			target_date = "2020/1/1 00:00:00";
+			time_zone = 0;	
+			target_future = true;
+			set_id = 1;
+			pan_id = 1; 
+			day_digits = 3;
+			fillStyleSymbol1 = "rgba(0,0,0,1)";
+			fillStyleSymbol2 = "rgba(0,0,0,1)";
+			fillStylesPanel_g1_1 = "rgba(200,200,200,1)";
+			fillStylesPanel_g1_2 = "rgba(200,200,200,1)";
+			fillStylesPanel_g2_1 = "rgba(100,100,100,1)";
+			fillStylesPanel_g2_2 = "rgba(100,100,100,1)";
+			text_color = "rgba(200,200,200,1)";text_glow = "rgba(0,0,0,1)"; 
+			show_ss = true;show_mm = true;show_hh = true;show_dd = true;
+			f_family = "Verdana";show_labels = true;
+			type3d = "single";
+			max_height = 300;
+			days_long = "days";days_short = "dd";hours_long = "hours";hours_short = "hh";
+			mins_long = "minutes";mins_short = "mm";secs_long = "seconds";secs_short = "ss";
+			min_f_size = 9;max_f_size = 30;
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "none";
+			font_to_digit_ratio = 0.17;
+			labels_space = 1.2;
+			set_ui();
+	
+		});
+	
+		$("#ex9").click(function(){
+			bgr_color = "#333333";
+			target_date = new Date();
+			time_zone = target_date.getTimezoneOffset()/(-60);
+			target_date = target_date.toDateString()+' '+target_date.toTimeString();
+			target_future = false;
+			set_id = 1;
+			pan_id = 2; 
+			day_digits = 3;
+			fillStyleSymbol1 = "rgba(255,255,255,1)";
+			fillStyleSymbol2 = "rgba(255,255,255,1)";
+			fillStylesPanel_g1_1 = "rgba(160,184,66,1)";
+			fillStylesPanel_g1_2 = "rgba(160,184,66,1)";
+			fillStylesPanel_g2_1 = "rgba(100,100,100,1)";
+			fillStylesPanel_g2_2 = "rgba(100,100,100,1)";
+			text_color = "rgba(255,255,255,1)";text_glow = "rgba(160,184,66,1)"; 
+			show_ss = true;show_mm = true;show_hh = false;show_dd = false;
+			f_family = "Verdana";show_labels = true;
+			type3d = "group";
+			max_height = 300;
+			days_long = "days";days_short = "dd";hours_long = "hours";hours_short = "hh";
+			mins_long = "minutes";mins_short = "mm";secs_long = "seconds";secs_short = "ss";
+			min_f_size = 9;max_f_size = 30;
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "circles";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+	
+		$("#ex10").click(function(){
+			bgr_color = "#333333";
+			target_date = "2020/1/1 00:00:00";
+			time_zone = 0;
+			target_future = true;
+			set_id = 0;
+			pan_id = 0; 
+			day_digits = 3;
+			fillStyleSymbol1 = "rgba(255,255,255,1)";
+			fillStyleSymbol2 = "rgba(255,255,255,1)";
+			fillStylesPanel_g1_1 = "rgba(250,0,38,1)";
+			fillStylesPanel_g1_2 = "rgba(250,0,38,1)";
+			fillStylesPanel_g2_1 = "rgba(255,179,16,1)";
+			fillStylesPanel_g2_2 = "rgba(255,179,16,1)";
+			text_color = "rgba(255,255,255,1)";text_glow = "rgba(0,0,0,1)"; 
+			show_ss = true;show_mm = true;show_hh = false;show_dd = false;
+			f_family = "Verdana";show_labels = false;
+			type3d = "single";
+			max_height = 300;
+			days_long = "days";days_short = "dd";hours_long = "hours";hours_short = "hh";
+			mins_long = "minutes";mins_short = "mm";secs_long = "seconds";secs_short = "ss";
+			min_f_size = 9;max_f_size = 30;
+			text_blur = 2;
+			groups_spacing = 0;
+			spacer = "none";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex13").click(function(){
+			bgr_color = "#333333";
+			target_date = "2020/1/1 00:00:00";
+			time_zone = 0; target_future = true;
+			set_id=1,pan_id=2,day_digits=2,
+			fillStyleSymbol1="rgba(41, 41, 41, 1)",
+			fillStyleSymbol2="rgba(41, 41, 41, 1)",
+			fillStylesPanel_g1_1="rgba(138, 138, 138, 1)",
+			fillStylesPanel_g1_2="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g2_1="rgba(102, 102, 102, 1)",
+			fillStylesPanel_g2_2="rgba(161, 161, 161, 1)",
+			text_color="rgba(255,255,255,1)",
+			text_glow="rgba(0, 0, 0, 1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="days",days_short="TT",
+			hours_long="hours",hours_short="SS",
+			mins_long="minutes",mins_short="MM",
+			secs_long="seconds",secs_short="SS",
+			min_f_size=9,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 2;
+			spacer = "none";
+			font_to_digit_ratio = 0.15;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex14").click(function(){
+			bgr_color = "#333333";
+			target_date="2020/1/1 00:00:00",
+			time_zone=2,target_future=true,
+			set_id=1,pan_id=2,day_digits=4,
+			fillStyleSymbol1="rgba(22, 47, 56, 1)",
+			fillStyleSymbol2="rgba(83, 173, 212, 1)",
+			fillStylesPanel_g1_1="rgba(56, 149, 163, 1)",
+			fillStylesPanel_g1_2="rgba(158, 245, 255, 1)",
+			fillStylesPanel_g2_1="rgba(0,0,0,1)",
+			fillStylesPanel_g2_2="rgba(20,61,85,1)",
+			text_color="rgba(83, 173, 212,1)",
+			text_glow="rgba(83, 173, 212,1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Arial",show_labels=true,
+			type3d="group",max_height=300,
+			days_long="days",days_short="dd",
+			hours_long="hours",hours_short="hh",
+			mins_long="minutes",mins_short="mm",
+			secs_long="seconds",secs_short="ss",
+			min_f_size=11,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "circles";
+			font_to_digit_ratio = 0.33;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+
+		$("#ex15").click(function(){
+			bgr_color = "#000000";
+			target_date="2020/1/1 00:00:00",
+			time_zone=0,target_future=true,
+			set_id=0,pan_id=0,day_digits=2,
+			fillStyleSymbol1="rgba(0, 0, 0, 1)",
+			fillStyleSymbol2="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g1_1="rgba(105, 105, 105, 1)",
+			fillStylesPanel_g1_2="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g2_1="rgba(0, 0, 0, 1)",
+			fillStylesPanel_g2_2="rgba(41, 51, 64, 1)",
+			text_color="rgba(137, 155, 181, 1)",
+			text_glow="rgba(0,0,0,1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="DAYS",days_short="dd",
+			hours_long="HOURS",hours_short="hh",
+			mins_long="MINUTES",mins_short="mm",
+			secs_long="SECONDS",secs_short="ss",
+			min_f_size=9,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 0;
+			spacer = "none";
+			font_to_digit_ratio = 0.1;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex16").click(function(){
+			bgr_color = "#ffffff";
+			target_date="2020/1/1 00:00:00",
+			time_zone=0,target_future=true,
+			set_id=0,pan_id=0,day_digits=3,
+			fillStyleSymbol1="rgba(135, 36, 55, 1)",
+			fillStyleSymbol2="rgba(63, 66, 89, 1)",
+			fillStylesPanel_g1_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g1_2="rgba(215, 215, 232, 1)",
+			fillStylesPanel_g2_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g2_2="rgba(215, 215, 232, 1)",
+			text_color="rgba(75, 85, 99, 1)",
+			text_glow="rgba(255, 255, 255, 1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="DAYS",days_short="dd",
+			hours_long="HOURS",hours_short="hh",
+			mins_long="MINUTES",mins_short="mm",
+			secs_long="SECONDS",secs_short="ss",
+			min_f_size=8,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "squares";
+			font_to_digit_ratio = 0.1;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex17").click(function(){
+			bgr_color = "#4F4B46";
+			target_date="2020/1/1 00:00:00",
+			time_zone=0,target_future=true,
+			set_id=0,pan_id=0,day_digits=2,
+			fillStyleSymbol1="rgba(79, 75, 70, 1)",
+			fillStyleSymbol2="rgba(92, 27, 11, 1)",
+			fillStylesPanel_g1_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g1_2="rgba(214, 205, 206, 1)",
+			fillStylesPanel_g2_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g2_2="rgba(143, 131, 131, 1)",
+			text_color="rgba(214, 205, 206, 1)",
+			text_glow="rgba(0, 0, 0, 1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="DAYS",days_short="dd",
+			hours_long="HOURS",hours_short="hh",
+			mins_long="MINUTES",mins_short="mm",
+			secs_long="SECONDS",secs_short="ss",
+			min_f_size=8,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 0;
+			spacer = "none";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex18").click(function(){
+			bgr_color = "#C7C7C7";
+			target_date="2020/1/1 00:00:00",
+			time_zone=0,target_future=true,
+			set_id=1,pan_id=1,day_digits=2,
+			fillStyleSymbol1="rgba(79, 75, 70, 1)",
+			fillStyleSymbol2="rgba(199, 199, 199, 1)",
+			fillStylesPanel_g1_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g1_2="rgba(214, 205, 206, 1)",
+			fillStylesPanel_g2_1="rgba(212, 60, 60, 1)",
+			fillStylesPanel_g2_2="rgba(150, 14, 18, 1)",
+			text_color="rgba(79, 75, 70, 1)",
+			text_glow="rgba(199, 199, 199, 1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="DAYS",days_short="dd",
+			hours_long="HOURS",hours_short="hh",
+			mins_long="MINUTES",mins_short="mm",
+			secs_long="SECONDS",secs_short="ss",
+			min_f_size=8,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 3;
+			spacer = "squares";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		$("#ex19").click(function(){
+			bgr_color = "#3C4547";
+			target_date="2020/1/1 00:00:00",
+			time_zone=0,target_future=true,
+			set_id=1,pan_id=1,day_digits=1,
+			fillStyleSymbol1="rgba(255, 255, 255, 1)",
+			fillStyleSymbol2="rgba(60, 69, 71, 1)",
+			fillStylesPanel_g1_1="rgba(83, 129, 143, 1)",
+			fillStylesPanel_g1_2="rgba(23, 26, 28, 1)",
+			fillStylesPanel_g2_1="rgba(255, 255, 255, 1)",
+			fillStylesPanel_g2_2="rgba(209, 209, 209, 1)",
+			text_color="rgba(124, 193, 214, 1)",
+			text_glow="rgba(0, 0, 0, 1)",
+			show_ss=true,show_mm=true,
+			show_hh=true,show_dd=true,
+			f_family="Verdana",show_labels=true,
+			type3d="single",max_height=300,
+			days_long="DAYS",days_short="dd",
+			hours_long="HOURS",hours_short="hh",
+			mins_long="MINUTES",mins_short="mm",
+			secs_long="SECONDS",secs_short="ss",
+			min_f_size=8,max_f_size=30,
+			text_blur = 2;
+			groups_spacing = 0;
+			spacer = "none";
+			font_to_digit_ratio = 0.125;
+			labels_space = 1.2;
+			set_ui();
+		});
+
+		
+	});	
+</script>
+
+<div id="count_cont" style="padding:10px 0px 10px 0px; background-color: #333">
+<div id="first_countdown" style="position: relative; width: 100%; height: 100px;"></div>
+</div>
+
+<div id="ex_cont" style="margin-top: 20px;">
+<div id="btn_cont">
+<a href="simple_demo1.html" class="classname">Simple Demo</a>
+<a href="simple_demo2.html" class="classname">Server Time</a>
+<a href="simple_demo3.html" class="classname">Custom Mode</a>
+<a href="documentation.html" class="classname">DOCUMENTATION</a>
+<div style="clear: both;margin-bottom: 5px;" />
+</div>
+<div style="float: left">
+<table class="table_ui" border="0" cellpadding="1" cellspacing="0">
+	<tr>
+		<td colspan="3"><input id="ui_target_date" class="input_text" style="width: 120px" type="text" value="2020/1/1 00:00:00" /></td>
+		<td colspan="1">target date</td>
+		<td colspan="1">
+			<select id="ui_time_zone">
+				<option value="13">13</option>
+				<option value="12">12</option>
+				<option value="11">11</option>
+				<option value="10">10</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+				<option value="0" selected>0</option>
+				<option value="-1">-1</option>
+				<option value="-2">-2</option>
+				<option value="-3">-3</option>
+				<option value="-4">-4</option>
+				<option value="-5">-5</option>
+				<option value="-6">-6</option>
+				<option value="-7">-7</option>
+				<option value="-8">-8</option>
+				<option value="-9">-9</option>
+				<option value="-10">-10</option>
+				<option value="-11">-11</option>
+				<option value="-12">-12</option>
+			</select>
+
+			
+		</td>
+		<td colspan="1">time zone</td>
+	</tr>
+	<tr>
+		<td><input id="ui_fillStyleSymbol1" value="#ffffff" class="color {pickerClosable:true}" onchange="fillStyleSymbol1 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>digit gr1</td>
+		<td colspan="2" style="text-align: center"><input id="ui_fillStylesPanel_g1_1" value="#646464" class="color {pickerClosable:true}" onchange="fillStylesPanel_g1_1 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();">&nbsp;<input id="ui_fillStylesPanel_g1_2" value="#1e1e1e" class="color {pickerClosable:true}" onchange="fillStylesPanel_g1_2 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>gradient gr1</td>
+		<td rowspan="2" style="text-align: center"><input id="ui_bgr_color" value="#333" class="color {pickerClosable:true}" onchange="bgr_color = '#'+this.color; $('#count_cont').css('background-color', '#'+this.color);"><br /><br />bgr color</td>
+	</tr>
+	<tr>
+		<td><input id="ui_fillStyleSymbol2" value="#ffffff" class="color {pickerClosable:true}" onchange="fillStyleSymbol2 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>digit gr2</td>
+		<td colspan="2" style="text-align: center"><input id="ui_fillStylesPanel_g2_1" value="#505082" class="color {pickerClosable:true}" onchange="fillStylesPanel_g2_1 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();">&nbsp;<input id="ui_fillStylesPanel_g2_2" value="#14143c" class="color {pickerClosable:true}" onchange="fillStylesPanel_g2_2 = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>gradient gr2</td>
+	</tr>
+	<tr>
+		<td colspan="6">
+			show
+			<input type="checkbox" id="show_dd" checked />DD
+			<input type="checkbox" id="show_hh" checked />HH
+			<input type="checkbox" id="show_mm" checked />MM
+			<input type="checkbox" id="show_ss" checked />SS
+			&nbsp;<select id="ui_day_digits">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3" selected>3</option>
+				<option value="4">4</option>
+			</select>&nbsp;day digits
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<select id="ui_type3d">
+				<option value="single">single</option>
+				<option value="group">group</option>
+			</select>
+		</td>
+		<td colspan="2">perspective</td>
+		<td><select id="ui_set">
+				<option value="00">00</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="01">01</option>
+				<option value="02">02</option>
+			</select>
+		</td>
+		<td>digit set</td>
+	</tr>
+	<tr>
+		<td colspan="6">
+			<select id="ui_spacer">
+				<option value="none">none</option>
+				<option value="squares">squares</option>
+				<option value="circles">circles</option>
+			</select>&nbsp;&nbsp;spacer&nbsp;&nbsp;
+			<select id="ui_groups_spacing">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>&nbsp;&nbsp;spacing&nbsp;&nbsp;
+			<select id="ui_text_blur">
+				<option value="0">0</option>
+				<option value="2" selected>2</option>
+				<option value="4">4</option>
+			</select>&nbsp;&nbsp;glow
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">max height</td>
+		<td colspan="4"><div id="slidery" style="width: 200px; margin: 2px 5px 2px 8px"></div></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="checkbox" id="show_labels" checked />show labels
+		</td>
+		<td><input id="ui_text_color" value="#ffffff" class="color {pickerClosable:true}" onchange="text_color = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>labels color</td>
+		<td><input id="ui_text_glow" value="#000000" class="color {pickerClosable:true}" onchange="text_glow = 'rgba('+Math.round(this.color.rgb[0]*255)+', '+Math.round(this.color.rgb[1]*255)+', '+Math.round(this.color.rgb[2]*255)+', 1)'; set_ui();"></td>
+		<td>labels glow</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input id="ui_days_long" class="input_text" type="text" value="days" /></td>
+		<td colspan="1">days long</td>
+		<td colspan="2"><input id="ui_hours_long" class="input_text" type="text" value="hours" /></td>
+		<td colspan="1">hours long</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input id="ui_mins_long" class="input_text" type="text" value="minutes" /></td>
+		<td colspan="1">minutes long</td>
+		<td colspan="2"><input id="ui_secs_long" class="input_text" type="text" value="seconds" /></td>
+		<td colspan="1">seconds long</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input id="ui_days_short" class="input_text" type="text" value="dd" /></td>
+		<td colspan="1">days short</td>
+		<td colspan="2"><input id="ui_hours_short" class="input_text" type="text" value="hh" /></td>
+		<td colspan="1">hours short</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input id="ui_mins_short" class="input_text" type="text" value="mm" /></td>
+		<td colspan="1">minutes short</td>
+		<td colspan="2"><input id="ui_secs_short" class="input_text" type="text" value="ss" /></td>
+		<td colspan="1">seconds short</td>
+	</tr>
+	<tr>
+		<td colspan="5"><input id="ui_f_family" class="input_text" type="text" value="Verdana" />
+			&nbsp;font&nbsp;<input id="ui_min_f_size" style="width:14px; text-align: center" class="input_text" type="text" value="9" />&nbsp;<input id="ui_max_f_size" style="width:14px; text-align: center" class="input_text" type="text" value="30" />
+			&nbsp;min/max size</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<select id="ui_font_to_digit_ratio">
+				<option value="0.1">10%</option>
+				<option value="0.125" selected>12.5%</option>
+				<option value="0.15">15%</option>
+				<option value="0.17">17%</option>
+				<option value="0.2">20%</option>
+				<option value="0.33">33%</option>
+			</select>
+		</td>
+		<td>
+			font size to digit ratio.
+		</td>
+		<td>
+			<select id="ui_labels_space">
+				<option value="1">0%</option>
+				<option value="1.1">10%</option>
+				<option value="1.2" selected>20%</option>
+				<option value="1.3">30%</option>
+			</select>
+		</td>
+		<td colspan="2">
+			gap to font size ratio.
+		</td>
+	</tr>
+	<tr>
+		<td colspan="6"><a href="#" id="crc1" style="display: none">create c1</a>&nbsp;&nbsp;<a href="#" id="pc1">PAUSE</a>&nbsp;&nbsp;<a href="#" id="plc1">PLAY</a></td>
+	</tr>
+</table>
+</div>
+
+<div style="float: left">
+
+<table class="table_ui" border="0" cellpadding="1" cellspacing="0">
+	<tr>
+		<td colspan="6" style="vertical-align: top; padding-top: 10px">
+			<div id="the_code" style="color: #aaa; width: 100%; height: 340px; overflow-x: auto; overflow-y: auto"></div>
+		</td>
+	</tr>
+</table>
+</div>
+<!--<div style="clear: both"></div>
+</div>
+
+<div id="ex_cont"  style="margin-top: 10px">-->
+<div class="ex_div"><a class="examples" href="#" id="ex1"><img src="new_ex1.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex2"><img src="new_ex2.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex5"><img src="new_ex3.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex9"><img src="new_ex4.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex10"><img src="new_ex5.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex13"><img src="new_ex6.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex14"><img src="new_ex7.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex15"><img src="elly1.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex16"><img src="elly2.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex17"><img src="elly3.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex18"><img src="elly4.png" /></a></div>
+<div class="ex_div"><a class="examples" href="#" id="ex19"><img src="elly5.png" /></a></div>
+<div style="clear: both" />
+</div>
+
+</body>
+</html>

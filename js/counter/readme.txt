@@ -1,0 +1,2 @@
+Thanks for the purchase. Please use the form on my profile page if you have any questions. http://codecanyon.net/user/chrisdean , or comment on the tool's page in codecanyon.net.
+An easy way to build your own countdown is to load the index.html page that contains the visual builder. When you are done you can copy the code that the builder outputs. Then you can open the simple_demo.html page and paste the code there to see the result of your work. The simple demo page has a background color set which you can change so it matches the one selected in the visual builder.

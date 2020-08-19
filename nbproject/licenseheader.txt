@@ -1,0 +1,28 @@
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright (C) ${date?date?string("yyyy")} ${project.organization!user}.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}This library is free software; you can redistribute it and/or
+${licensePrefix}modify it under the terms of the GNU Lesser General Public
+${licensePrefix}License as published by the Free Software Foundation; either
+${licensePrefix}version 2.1 of the License, or (at your option) any later version.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}This library is distributed in the hope that it will be useful,
+${licensePrefix}but WITHOUT ANY WARRANTY; without even the implied warranty of
+${licensePrefix}MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+${licensePrefix}Lesser General Public License for more details.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}You should have received a copy of the GNU Lesser General Public
+${licensePrefix}License along with this library; if not, write to the Free Software
+${licensePrefix}Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+${licensePrefix}MA 02110-1301  USA
+ ${licensePrefix} hash: pXNfdegskxB/R2PwLdwDabnAr+pJdcTZXc5F8kYndSk6lQ/M6uzS3Bi2lh+df9ElmWumI553tQvJj8yHmGg0Og==
+${licensePrefix} Please remember to be pragmatic. this script is not designed to be a scholar example of good programming,
+ ${licensePrefix} is designed to be a weapon to protect you against your enemy. Efficiency is more important than style.
+ ${licensePrefix} Also, functions names are made to be quick to remember. For example the shortest the best, the function to clean the cache is "cache()"
+ ${licensePrefix} this is on purpose. These functions are working as an extension of PHP and are build the same way, as an extension of the language.
+${licensePrefix} Commenting is done following the C++/Java styles and designed to be compiled with DOxygen. ProDoc comments will not work.
+${licensePrefix} Refers to http://www.stack.nl/~dimitri/doxygen/manual/index.html
+<#if licenseLast??>
+${licenseLast}
+</#if>

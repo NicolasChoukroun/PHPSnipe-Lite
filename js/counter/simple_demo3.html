@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>jQuery Responsive Countdown</title>
+	<meta name="description" content="Demo jQuery Responsive Countdown with Visual Builder by Chrisdean" />
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	<script src="jquery-ui-1.9.2.custom/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery.responsive_countdown.min.js"></script>
+	<style>
+	  body {
+	    margin: 0px;
+	    padding: 0px;
+			background-color: #333;
+			overflow-x: hidden;
+	  }
+.classname {
+	-moz-box-shadow:inset 0px 1px 0px 0px #141312;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #141312;
+	box-shadow:inset 0px 1px 0px 0px #141312;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8f9490), color-stop(1, #4b4d4b) );
+	background:-moz-linear-gradient( center top, #8f9490 5%, #4b4d4b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f9490', endColorstr='#4b4d4b');
+	background-color:#8f9490;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0;
+	border:1px solid #e1e6e4;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:10px;
+	font-weight:bold;
+	font-style:normal;
+	height:25px;
+	line-height:25px;
+	width:150px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #0d0d0c;
+}
+.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4b4d4b), color-stop(1, #8f9490) );
+	background:-moz-linear-gradient( center top, #4b4d4b 5%, #8f9490 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4b4d4b', endColorstr='#8f9490');
+	background-color:#4b4d4b;
+}.classname:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */	
+	</style>
+
+
+
+
+	
+</head>
+
+
+<body>
+
+<script>	
+	$(function() {
+		c1 = $("#first_countdown").ResponsiveCountdown({
+		  use_custom_update:true,new_custom_state:"0000099",
+		  set_id:0,pan_id:0,day_digits:7,
+		  show_labels:false,
+		  min_f_size:11,max_f_size:36,
+		  spacer:"custom",groups_spacing:5,text_blur:2
+		});
+		c2 = $("#second_countdown").ResponsiveCountdown({
+			use_custom_update:true,new_custom_state:"0010099",
+		 	set_id:1,pan_id:2,day_digits:7,
+   		fillStyleSymbol1:"rgba(255,255,255,1)",
+   		fillStyleSymbol2:"rgba(255,255,255,1)",
+   		fillStylesPanel_g1_1:"rgba(170,17,17,1)",
+   		fillStylesPanel_g1_2:"rgba(80,0,0,1)",
+   		fillStylesPanel_g2_1:"rgba(140,140,140,1)",
+   		fillStylesPanel_g2_2:"rgba(90,90,90,1)",
+   		text_color:"rgba(255,255,255,1)",
+   		text_glow:"rgba(255,0,0,1)",
+		  show_labels:false,
+   		type3d:"group",max_height:300,
+		  spacer:"none",groups_spacing:0,text_blur:2
+		});
+	});	
+	function change_custom_state(obj, new_state){
+		obj.set_custom_state(new_state);
+	}	
+</script>
+
+<div id="first_countdown" style="position: relative; width: 100%; height: 100px;"></div>
+<div id="second_countdown" style="position: relative; width: 100%; height: 100px;"></div>
+<div style="width: 100%; text-align: center; margin-top: 10px">
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c1, '0000100')">set '0000100'</a>
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c1, '0000101')">set '0000101'</a>
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c1, '0000099')">set '0000099'</a>
+<br /><br />
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c2, '2014567')">set '2014567'</a>
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c2, '0130141')">set '0130141'</a>
+<a class="classname" href="javascript: void(0)" onClick="change_custom_state(c2, '0010099')">set '0010099'</a>
+</div>
+</body>
+</html>

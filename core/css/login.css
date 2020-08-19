@@ -1,0 +1,125 @@
+/*
+ *  Copyright (c) 2013-2020. Nicolas Choukroun.
+ *  Copyright (c) 2013-2020. The PHPSnipe Developers.
+ *  This program is free software; you can redistribute it and/or modify it
+ *  under the terms of the Attribution 4.0 International License as published by the
+ *  Creative Commons Corporation; either version 2 of the License, or (at your option)
+ *  any later version.  See COPYING for more details.
+ *
+ ******************************************************************************/
+
+/**! Login.php, register.php specific styles **/
+
+h1,h2,h3,h4,h5,h6,p {
+    color:#000;
+}
+
+
+.form-login-heading {
+text-align:center;
+line-height:1.1;
+height:20px;
+width:100%;
+font-size:26px;
+color:#545D7E;
+}
+
+.login-logo {
+margin-top:10px;
+}
+
+.login-options {
+color:#8E8E88;
+font-size:15px;
+}
+
+.form-box {
+padding:10px;
+margin:10px;
+}
+
+.text-options {
+}
+
+.form-input {
+position:relative;
+background-color:#FFFFFF;
+-webkit-border-radius:0px;
+-moz-border-radius:0px;
+border-radius:0px;
+color:#545D7E;
+margin:14px;
+padding:7px;
+width:90%;
+margin-right:5%;
+margin-left:5%;
+z-index:200;
+}
+
+.submit-button {
+position:relative;
+background-color: #ff1a29;
+margin-right:5%;
+margin-left:5%;
+border:0px solid;
+/*+border-radius: 0;*/
+-moz-border-radius:0;
+-webkit-border-radius:0;
+-html-border-radius:0;
+border-radius:0;
+margin-top:40px;
+width:100%;
+color:#FFFFFF;
+font-weight:bold;
+text-transform:uppercase;
+z-index:200;
+}
+
+.submit-button:hover {
+background-color:#FF9898;
+}
+
+.submit-button:active {
+background-color:#DD9898;
+}
+
+
+meter {
+    /* Reset the default appearance */
+    margin: 0 auto 1em;
+    width: 100%;
+    height: .5em;
+
+    /* Applicable only to Firefox */
+    background: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+meter[value="0"]::-webkit-meter-optimum-value,
+meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+meter[value="1"]::-moz-meter-bar,
+meter[value="1"]::-moz-meter-bar { background: red; }
+meter[value="2"]::-moz-meter-bar { background: yellow; }
+meter[value="3"]::-moz-meter-bar { background: orange; }
+meter[value="4"]::-moz-meter-bar { background: green; }
+
+.feedback {
+    color: #9ab;
+    font-size: 90%;
+    padding: 0 .25em;
+    font-family: Courgette, cursive;
+    margin-top: 1em;
+}
+
+meter::-webkit-meter-optimum-value {
+    transition: width .4s ease-out;
+}

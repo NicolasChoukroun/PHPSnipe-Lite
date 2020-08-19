@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>jQuery Responsive Countdown Documentation</title>
+	<meta name="description" content="Documentation jQuery Responsive Countdown with Visual Builder by Chrisdean" />
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	<style>
+	  body {
+	    margin: 15px;
+	    padding: 15px;
+	    font-family: Verdana;
+	    font-size: 12px;
+	    background-color: #fff;
+	    color: #333;
+	    line-height:150%;
+	  }
+
+		pre {
+		    background-color: rgb(200, 200, 200);
+		    background-image: linear-gradient(rgb(200, 200, 200) 50%, rgb(180, 180, 180) 50%);
+		    background-size: 38px 38px;
+		    border: 1px solid #555;
+		    display: block;
+		    line-height: 19px;
+		    margin-bottom: 10px;
+		    padding: 0px 0px 0px 4px;
+				overflow-x: visible;
+				overflow-y: hidden;
+				color: #000;    
+		}	  
+	  
+	  table{
+	    border: 1px solid #555;
+	  	margin: 0px;
+	  	padding:0px;
+	  }
+	  td{
+	  	margin: 0px;
+	  	padding:3px 10px;
+	  	border: 0px;
+	  }
+	  tr:nth-child(odd) {
+		  background-color: #C8C8C8;
+		}
+		
+		tr:nth-child(even) {
+		  background-color: #B4B4B4;
+		}
+		a{
+			color: red;
+		}
+		ol.alpha {list-style:upper-alpha;}
+		
+		.note{
+			font-size: 10px;
+			font-style: italic;
+			color: #666;
+		}
+	</style>
+
+</head>
+<body>
+<h1>JQUERY RESPONSIVE COUNTDOWN</h1>
+<hr />
+<p>If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://codecanyon.net/user/chrisdean">here</a>.</p>
+<h2 id="toc">Table of Contents</h2>
+<ol class="alpha">
+<li><a href="#Description">Description</a></li>
+<li><a href="#Quick Start">Quick Start Guide</a></li>
+<li><a href="#Add Basic Options">Add Some Basic Options</a></li>
+<li><a href="#Advanced Usage">Advanced Usage</a></li>
+<li><a href="#Features">Features</a></li>
+<li><a href="#Options">Options</a></li>
+<li><a href="#Methods">Methods</a></li>
+<li><a href="#Events">Events</a></li>
+</ol>
+
+<h2 id="Description">Description - <a href="#toc">top</a></h2>
+<hr />
+<p>This is a javascript based tool that uses the canvas object to animate SVG defined drawings. The tool uses a flip animation to display the remaining time to or the elapsed time from a target date. The tool detects change of width and height of its container object and responds accordingly. Since it uses vector data to draw the digits and the panels of the countdown, there is no change in the quality of the displayed drawings when it gets resized. The tool features around 30 options to customize but it can also be used in a simple configuration.</p>
+
+<h2 id="Quick Start">Quick Start Guide - <a href="#toc">top</a></h2>
+<hr />
+<p>1. In order to play, the tool needs to execute on a div that is relatively or absolutely positioned, because the tool creates layers of canvas objects within the div that are absolutely positioned. The div needs to have an id attribute in order to be easily selected. The div may have width defined with percent values. Every resize of browser will get detected by the tool and it will redraw accordingly. The height of the div is not important, because the tool will change it in order to draw the countdown. There is a parameter though that defines the maximum height the tool can have. Here is an example of a div object that can be used:</p>
+<pre>
+&lt;div id="first_countdown" style="position: relative; width: 100%; height: 50px;"&gt;&lt;/div&gt;
+</pre>
+<p>2. After you have created the div element you will need to import some Javascript files. These are jQuery, and the countdown plugin. In my demos, I add these in the header of the document.</p>
+<pre>
+&lt;script src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.responsive_countdown.js"&gt;&lt;/script&gt;
+</pre>
+<p>3. Lastly you need to select the div element and run the countdown. It is possible to not specify any options and the default ones will be used.</p>
+<pre>
+&lt;script&gt;
+ jQuery(document).ready(function($){  
+  $('#first_countdown').ResponsiveCountdown();
+ });  
+&lt;/script&gt;
+</pre>
+
+<h2 id="Add Basic Options">Add Some Basic Options - <a href="#toc">top</a></h2>
+<hr />
+<p>The power of the tool comes with the setting of its wide array of options. The most important are the target date and the time zone.</p>
+<p>1. Target date and time zone. It is possible to set a date in the future and handle the moment of reaching that date, or just count from a date. In example #4 of the demo I am setting the target date like this: target_date: new Date(); which means now, and also I set the time zone to time_zone = target_date.getTimezoneOffset()/(-60); which gets the time zone the user is in. If also the target_future option is set to false that gives you a counter starting from 00:00, no matter where the user is - also it will not listen for end event. Of course it is possible to just set a target date like this: target_date:"2020/10/25 00:00:00";. If target_future is set to true it will check for end event - it will also trigger if the countdown page is loaded after the end event.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  target_date:"2020/1/1 00:00:00",
+  time_zone:0,target_future:true
+});
+</pre>
+<p>2. Managing the groups. It is possible to show/hide the days, hours, minutes and seconds simply by using the show_dd, show_hh, show_mm, show_ss options. Also the number of day places can be set using the day_digits option.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  show_ss:true,show_mm:false,
+  show_hh:false,show_dd:true,
+  day_digits:4
+});
+</pre>
+<p>3. Setting the label captions. User can change the captions of long and short labels for each group. When there is not enough space to show the long caption the tool shows the short caption. User can hide or show labels by setting the show_labels option.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  show_labels:true,
+  days_long:"days",days_short:"dd",
+  hours_long:"hours",hours_short:"hh",
+  mins_long:"minutes",mins_short:"mm",
+  secs_long:"seconds",secs_short:"ss"
+});
+</pre>
+<p>4. Setting the colors. There are 8 colors that can be set and used in the tool. Two color groups are formed that alternate when more than one group is displayed. Each group has 3 colors. One for the digits (fillStyleSymbol1, fillStyleSymbol2) and 2 for color gradeint that is used for the panel (fillStylesPanel_g1_1, fillStylesPanel_g1_2, fillStylesPanel_g2_1, fillStylesPanel_g2_2). The last two colors define the color of the labels and minimal glow effect (text_color, text_glow). The colors can be set only by using the RGBA format. Transparency is not taken into account though for performance reasons.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  fillStyleSymbol1:"rgba(22, 47, 56, 1)",
+  fillStyleSymbol2:"rgba(83, 173, 212, 1)",
+  fillStylesPanel_g1_1:"rgba(56, 149, 163, 1)",
+  fillStylesPanel_g1_2:"rgba(158, 245, 255, 1)",
+  fillStylesPanel_g2_1:"rgba(0,0,0,1)",
+  fillStylesPanel_g2_2:"rgba(20,61,85,1)",
+  text_color:"rgba(83, 173, 212,1)",
+  text_glow:"rgba(83, 173, 212,1)"
+});
+</pre>
+<p>5. The height of the tool varies depending on the available width and the options selected for the tool. It is possible to set maximum height though which will limit the overall size of the tool.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  max_height:300
+});
+</pre>
+<p>6. It is possible to space the groups (seconds, minutes, hours, days) of the countdown tool. To do that the groups_spacing option must be set. If set to 0, the space between groups is equal to the space between digits. If set to 1 additional digit space is added between groups. If set to five then 5x digit space is added between groups. It can also be a float number.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  groups_spacing:3
+});
+</pre>
+<p>7. The groups can be divided further more by using symbols. The spacer option can be set to "none", "squares" or "circles" in order to place dividers as in digital clock. The spacer symbols use the color and glow of the labels. In the custom mode usage the spacer can be set to "custom", which shows thousand groups comma separator.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  spacer:"squares"
+});
+</pre>
+<p>8. Labels look very pixelated in some mobile browsers, so I added a subtle glow. It can be turned off or set to custom integer value. Use 0 to turn it off.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  text_blur:2
+});
+</pre>
+<h2 id="Advanced Usage">Advanced Usage - <a href="#toc">top</a></h2>
+<hr />
+<p>The tool allows the use of few public methods, also the setting of complete event handler. Some other options concerning the font used for labels are available together with digit set definition and type of perspective.</p>
+<p>1. There are six public methods. Two of them can pause and resume the animation. It is only the animation that is paused - the actual counting is still running. One method exists that can destroy the tool. Two methods are available for getting and setting options. To set options an array is send which alternates the name of the option and the value of the option. To get an option value only the name of the option is passed. One method is used to drive the tool in the so called custom mode.</p>
+<pre>
+var fc = jQuery('#first_countdown').ResponsiveCountdown();
+fc.pause_anim();
+fc.play_anim();
+fc.set_options(["day_digits", 4, "max_height", 120]);
+fc.get_option("day_digits");
+fc.destroy_countdown();
+fc.set_custom_state("00331245");
+</pre>
+<p>2. Setting of complete event handler. The tool gets destroyed on complete event, but user can define additional function to execute upon completion.</p>
+<pre>
+jQuery('#first_countdown').ResponsiveCountdown({
+  complete: function(){alert('Hello world')}
+});
+</pre>
+<p>3. Type of perspective. There are two types of perspective possible. "Single" type uses each digit individually to calculate the 3D view. The "group" type uses the countdown as a whole to determine the 3D projection.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  type3d:"group"
+});
+
+var fc = jQuery("#first_countdown").ResponsiveCountdown();
+fc.set_options(["type3d, "group"]);
+</pre>
+<p>4. Digit sets. There are two sets of digits available. These are SVG definitions for the 0..9 symbols in 150x150 pixels rectangle split into two parts vertically. Oswald and Federation fonts are used. Also there are three panels defined. To set these option use set_id and pan_id variables.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  set_id:0,pan_id:0
+});
+</pre>
+<p>5. Font options. I used 3 fonts in my demo - "Arial", "Verdana" and "Courier" to set the f_family option. It is good to use fonts that are widely used. To setup the font size the font_to_digit_ratio option is used. It defines the font size based on the size of the digits of the tool. Recommended values vary from 0.1 to 0.3, which stands for 10% to 30% of digits height. The labels_space options is used to define the total space used by labels and top padding to digits. Acceptable values for this option start from 1 and end around 1.25. If 1.2 is taken for example it will define 20% gap above the labels, where the percentage is based on the labels font size. If 1 is chosen that will mean no gap, because all the space (100%) will be taken by the labels. The space that is left for labels shows only below the tool. In previous versions, the space also was showing above the tool. While the tool is resized it calculates the font size, but you can define minimum and maximum font size with the min_f_size and max_f_size options.</p>
+<pre>
+jQuery("#first_countdown").ResponsiveCountdown({
+  f_family:"Verdana",
+  min_f_size:9,max_f_size:15,
+  font_to_digit_ratio: 0.125, labels_space: 1.2
+});
+</pre>
+<p>6. Using the public method get_option with counter_width parameter it is possible to get the width of the area that is actually used to draw the tool in the canvas objects.</p>
+<pre>
+var fc = jQuery('#first_countdown').ResponsiveCountdown();
+var actual_width = fc.get_option("counter_width");
+</pre>
+<p>7. It is possible to use the tool in the so called custom mode. In this mode the tool does not act as a timer. It will wait for the use of the set_custom_state public method. It passes the value that will set the new_custom_state option in string format. This value is used to set the state of the digits. In this mode only the day digits group is used. It is needed to match the number of day digits day_digits to the number of symbols in the parameter passed by the set_custom_state method - for example if 5 day digits are used then parameter passed should look like this - "23045". It is required by the user to decide when the tool will change its state and pass the new state. In this mode the tool is only used for presentation. It is possible to divide the thousand groups with comma symbol. To use the custom mode use_custom_update must be passed with true value, initial custom state (new_custom_state option) must be passed in string format, day_digits option must be set and its value has to match the string length of new_custom_state, set show_labels to false to hide the labels, use spacer with "custom" value if you want to show thousand groups dividers. After setting the tool in custom mode you will have to call the set_custom_state to change the state of the digits.</p>
+<pre>
+c1 = jQuery("#first_countdown").ResponsiveCountdown({
+  use_custom_update:true,new_custom_state:"0000099",
+  set_id:0,pan_id:0,day_digits:7,
+  show_labels:false,
+  min_f_size:11,max_f_size:36,
+  spacer:"custom",groups_spacing:5,text_blur:2
+});
+...
+...
+c1.set_custom_state("0000108");
+</pre>
+<p>8. The tool can be used with time settings that come from a server script. The server_now_date option can be used to pass the current date/time taken from the server. This option is used when the tool is created. The tool reads the client now date and uses the difference to calculate the remaining time from or to the target date. Note that if the time/date on the client is changed deliberately a reload of the page is needed in order for the tool to synchronize with the server time again. The example below uses a static value for server_now_date. In your live code you will have to put there a variable that holds the server now date - server_now_date:"&lt;?php echo $server_time ?&gt;" can be a possible usage.</p>
+
+<pre>
+c1 = jQuery("#first_countdown").ResponsiveCountdown({
+  server_now_date:"2019/1/1 12:30:50",
+  target_date:"2020/1/1 00:00:00"
+});
+</pre>
+<h2 id="Features">Features - <a href="#toc">top</a></h2>
+<hr />
+<ul>
+<li>Responsive behavior. The tool scales according to available width.</li>
+<li>Visual tool that assist you to create your unique countdown.</li>
+<li>Infinite color combinations. Solid color for the digits. Gradient color for the panels.</li>
+<li>Show hide groups.</li>
+<li>Two perspective modes.</li>
+<li>Two sets of digits. Three sets of panels.</li>
+<li>Setting of time zone.</li>
+<li>Setting of label captions.</li>
+<li>Setting of labels font and size.</li>
+<li>Groups spacing. Groups divider - circles or squares.</li>
+<li>Usage of time settings coming from a server. Synchronization takes place only during the initialization of the tool.</li>
+<li>Custom mode, that allows setting of the digits by the usage of a public method.</li>
+</ul>
+
+<h2 id="Options">Options - <a href="#toc">top</a></h2>
+<hr />
+<table
+<tr><th>Option</th><th>Default Value</th><th>Description</th></tr>
+<tr><td>target_date</td><td>"2020/1/1 00:00:00"</td><td>Set this option to a future date to make the tool count down. Set it to passed date to make the tool count elapsed time.</td></tr>
+<tr><td>time_zone</td><td>0</td><td>Can be set to a value in the interval (-12..13).</td></tr>
+<tr><td>target_future</td><td>true</td><td>If set to true tool will react on the event of reaching or passing the target date. Set it to false if you want to count elapsed time.</td></tr>
+<tr><td>set_id</td><td>0</td><td>Can be set to 0 or 1 for now for Oswald or Federation digits.</td></tr>
+<tr><td>pan_id</td><td>0</td><td>Can be set to 0,1 or 2 for one of the three possible panels defined.</td></tr>
+<tr><td>day_digits</td><td>3</td><td>The number of day digits.</td></tr>
+<tr><td>fillStyleSymbol1</td><td>"rgba(255,255,255,1)"</td><td>Color of digit for first group</td></tr>
+<tr><td>fillStyleSymbol2</td><td>"rgba(255,255,255,1)"</td><td>Color of digit for second group</td></tr>
+<tr><td>fillStylesPanel_g1_1</td><td>"rgba(100,100,100,1)"</td><td>First Gradient color for panel for first group.</td></tr>
+<tr><td>fillStylesPanel_g1_2</td><td>"rgba(30,30,30,1)"</td><td>Second Gradient color for panel for first group. If the two gradient colors are equal a solid color is used.</td></tr>
+<tr><td>fillStylesPanel_g2_1</td><td>"rgba(80,80,130,1)"</td><td>First Gradient color for panel for second group.</td></tr>
+<tr><td>fillStylesPanel_g2_2</td><td>"rgba(20,20,60,1)"</td><td>Second Gradient color for panel for second group. If the two gradient colors are equal a solid color is used.</td></tr>
+<tr><td>text_color</td><td>"rgba(255,255,255,1)"</td><td>Color for label captions.</td></tr>
+<tr><td>text_glow</td><td>"rgba(0,0,0,1)"</td><td>Color for label glow.</td></tr>
+<tr><td>show_ss</td><td>true</td><td>Show or hide seconds group.</td></tr>
+<tr><td>show_mm</td><td>true</td><td>Show or hide minutes group.</td></tr>
+<tr><td>show_hh</td><td>true</td><td>Show or hide hours group.</td></tr>
+<tr><td>show_dd</td><td>true</td><td>Show or hide days group.</td></tr>
+<tr><td>f_family</td><td>"Verdana"</td><td>Set the font for label captions.</td></tr>
+<tr><td>show_labels</td><td>true</td><td>Show or hide all labels.</td></tr>
+<tr><td>type3d</td><td>"single"</td><td>Single mode uses every digit to calculate projection. Group mode uses the whole tool to calculate projection.</td></tr>
+<tr><td>max_height</td><td>300</td><td>Maximum height of the tool.</td></tr>
+<tr><td>days_long</td><td>"days"</td><td>Long caption for days group.</td></tr>
+<tr><td>days_short</td><td>"dd"</td><td>Short caption for days group.</td></tr>
+<tr><td>hours_long</td><td>"hours"</td><td>Long caption for hours group.</td></tr>
+<tr><td>hours_short</td><td>"hh"</td><td>Short caption for hours group.</td></tr>
+<tr><td>mins_long</td><td>"minutes"</td><td>Long caption for minutes group.</td></tr>
+<tr><td>mins_short</td><td>"mm"</td><td>Short caption for minutes group.</td></tr>
+<tr><td>secs_long</td><td>"seconds"</td><td>Long caption for seconds group.</td></tr>
+<tr><td>secs_short</td><td>"ss"</td><td>Short caption for seconds group.</td></tr>
+<tr><td>min_f_size</td><td>9</td><td>Minimum font size in pixels.</td></tr>
+<tr><td>max_f_size</td><td>15</td><td>Maximum font size in pixels.</td></tr>
+<tr><td>font_to_digit_ratio</td><td>0.125</td><td>Defines font size based on the height of the digits. 1 means 100% of the digit's height.</td></tr>
+<tr><td>labels_space</td><td>1.2</td><td>Defines the gap between the labels and the digits. 1 means there is no gap and 100% of the space is used to display the labels. 1.2 means the gap is 20% of the size of the labels. 1.125 means the gap is 12.5% of the size of the labels.</td></tr>
+<tr><td>use_custom_update</td><td>false</td><td>Use this option to activate the custom mode.</td></tr>
+<tr><td>new_custom_state</td><td>""</td><td>The state of digits in string format. Length of string must match the day_digits option value. Example value - "32231".</td></tr>
+<tr><td>groups_spacing</td><td>0</td><td>Additional space between groups. If space between digits is N pixels and groups_spacing i M then group spacing is N*M pixels.</td></tr>
+<tr><td>spacer</td><td>"none"</td><td>Graphic divider between groups similar to digital clock. Can be set to "none", "squares" and "circles". The value "custom" is used in the custom mode to show thousand groups comma separator.</td></tr>
+<tr><td>text_blur</td><td>2</td><td>A glow effect behind labels to soften their appearance in some mobile browsers. Set to 0 to turn it off. Use integer numbers otherwise to set effect radius. Also applies to the groups graphic divider.</td></tr>
+<tr><td>counter_width</td><td>0</td><td>The width of the area that contains the tool within the canvas object. Can be read with get_option method.</td></tr>
+</table>
+
+<h2 id="Methods">Methods - <a href="#toc">top</a></h2>
+<hr />
+
+<table>
+<tr><td>pause_anim()</td><td>Use this method to pause the animation, but not the counting.</td></tr>
+<tr><td>play_anim()</td><td>Resume animation.</td></tr>
+<tr><td>destroy_countdown()</td><td>Destroy the countdown.</td></tr>
+<tr><td>set_options([name1,value1,...,nameN,valueN])</td><td>Set options by sending pairs of names and values.</td></tr>
+<tr><td>get_option(option_name)</td><td>Get option value by sending its name.</td></tr>
+<tr><td>set_custom_state(new_custom_state)</td><td>Set the new state of the digits in custom mode usage.</td></tr>
+
+</table>
+
+<h2 id="Events">Events - <a href="#toc">top</a></h2>
+<hr />
+
+<table>
+<tr><td>complete</td><td>A function can be tied to this event which will execute every time the animation is finished.</td></tr>
+</table>
+</body>
+</html>

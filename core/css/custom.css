@@ -1,0 +1,165 @@
+/*
+ *  Copyright (c) 2013-2020. Nicolas Choukroun.
+ *  Copyright (c) 2013-2020. The PHPSnipe Developers.
+ *  This program is free software; you can redistribute it and/or modify it
+ *  under the terms of the Attribution 4.0 International License as published by the
+ *  Creative Commons Corporation; either version 2 of the License, or (at your option)
+ *  any later version.  See COPYING for more details.
+ *
+ ******************************************************************************/
+
+/**! Custom Styles Go Here (for easy template updating) **/
+
+.bg-primary {
+  background: #47b475 !important;
+}
+.bg-secondary {
+  background: #f8f8f8;
+}
+.bg-white {
+  background: #fff;
+}
+.bg-dark {
+  background: #fff;
+}
+.color-body {
+  color: #666;
+}
+.color-primary {
+  color: #47b475 !important;
+}
+.color-red {
+  color: #e31d3b !important;
+}
+.color-white {
+  color: #fff;
+}
+.shadow {
+  -webkit-box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.62);
+  -moz-box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.62);
+  box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.62);
+}
+
+p {
+  text-align:justify;
+}
+
+.container-main {
+  left:20px;
+}
+
+.xcrud-actions {
+  min-width:200px;
+}
+.btn-sm {
+  min-width:50px;
+}
+
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+  padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+  top: 0;
+  bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+  padding: 0;
+}
+
+
+/*
+
+for zoom animation
+uncomment this part if you haven't added this code anywhere else
+
+*/
+
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+		opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+		opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+	opacity: 0;
+}
+
+
+.crypto-icon {
+    margin: 5px;
+
+    width: 64px;
+    height: 64px;
+
+}
+
+#target-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+}
+
+#target-content:target {
+    pointer-events: all;
+    opacity: 1;
+}
+
+#target-content #target-inner {
+    position: absolute;
+    display: block;
+    padding: 48px;
+    line-height: 1.8;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    background: white;
+    color: #34495E;
+}
+
+#target-content #target-inner h2 {
+    margin-top: 0;
+}
+
+#target-content #target-inner code {
+    font-weight: bold;
+}
+
+#target-content a.close {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #34495E;
+    opacity: 0.5;
+    transition: opacity 200ms;
+}
+
+#target-content a.close:hover {
+    opacity: 0.4;
+}
